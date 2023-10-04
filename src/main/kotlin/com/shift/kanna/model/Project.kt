@@ -29,4 +29,8 @@ class Project {
             this.ownerId = ownerId
         }
     }
+
+    fun join(accountId: Long): ProjectMember {
+        return ProjectMember(accountId, id)
+    }
 }
