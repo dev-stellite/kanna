@@ -40,7 +40,7 @@ class Issue {
     @JoinColumn(name = "assignee_id", insertable = false, updatable = false)
     var assignee: ProjectMember? = null; private set
     @Column(name = "assignee_id")
-    var assigneeId: Long = 0; private set
+    var assigneeId: Long? = null; private set
 
     companion object {
         fun create(projectId: Long,

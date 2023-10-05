@@ -2,6 +2,7 @@ package com.shift.kanna.service
 
 import com.shift.kanna.dto.project.CreateProjectDto
 import com.shift.kanna.model.Project
+import com.shift.kanna.model.ProjectMember
 import com.shift.kanna.repository.ProjectMemberRepository
 import com.shift.kanna.repository.ProjectRepository
 import org.springframework.stereotype.Service
@@ -24,5 +25,9 @@ class ProjectService(
         projectMemberRepository.save(projectMember)
 
         return persistedProject
+    }
+
+    fun getProjectMemberByAccount(projectId: Long, accountId: Long): ProjectMember? {
+        return projectMemberRepository.findByProjectIdAndAccountId(projectId, accountId)
     }
 }

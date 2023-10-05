@@ -3,7 +3,6 @@ package com.shift.kanna.service
 import com.shift.kanna.dto.issue.CreateIssueDto
 import com.shift.kanna.model.Issue
 import com.shift.kanna.repository.IssueRepository
-import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 import kotlin.jvm.optionals.getOrNull
@@ -18,7 +17,9 @@ class IssueService(
         reporterId: Long,
         createIssueDto: CreateIssueDto,
     ): Issue {
-        return Issue.create(projectId, reporterId, createIssueDto, issueRepository)
+        val issue = Issue.create(projectId, reporterId, createIssueDto, issueRepository)
+
+        return issueRepository.save(issue)
     }
 
     fun getIssues(projectId: Long): List<Issue> {
