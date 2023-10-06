@@ -4,6 +4,7 @@ import com.shift.kanna.controller.argument.CurrentProjectMember
 import com.shift.kanna.dto.issue.CreateIssueDto
 import com.shift.kanna.dto.issue.GetIssuesResponseDto
 import com.shift.kanna.model.Issue
+import com.shift.kanna.model.IssueStatus
 import com.shift.kanna.model.ProjectMember
 import com.shift.kanna.service.IssueService
 import org.springframework.web.bind.annotation.GetMapping
@@ -19,8 +20,10 @@ class IssueController(
     private val issueService: IssueService,
 ) {
     @GetMapping
-    fun getIssues(@PathVariable("projectId") projectId: Long): List<GetIssuesResponseDto> {
-        return issueService.getIssues(projectId).map { GetIssuesResponseDto(it) }
+    fun getIssues(@PathVariable("projectId") projectId: Long): Map<IssueStatus, List<GetIssuesResponseDto>> {
+        return issueService.getIssues(projectId)
+            .map { GetIssuesResponseDto(it) }
+            .groupBy { it.status }
     }
 
     @PostMapping
