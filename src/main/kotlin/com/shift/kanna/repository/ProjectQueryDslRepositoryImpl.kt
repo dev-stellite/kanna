@@ -18,8 +18,8 @@ class ProjectQueryDslRepositoryImpl(
             .select(project)
             .from(project)
             .leftJoin(project.owner, account).fetchJoin()
-            .leftJoin(projectMember).on(projectMember.projectId.eq(project.id))
-            .where(projectMember.accountId.eq(accountId))
+            .leftJoin(projectMember).on(projectMember.project.id.eq(project.id))
+            .where(projectMember.account.id.eq(accountId))
             .fetch()
     }
 }

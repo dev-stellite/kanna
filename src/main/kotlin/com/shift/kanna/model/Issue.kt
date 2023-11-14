@@ -1,8 +1,6 @@
 package com.shift.kanna.model
 
-import com.shift.kanna.dto.issue.CreateIssueDto
 import com.shift.kanna.model.base.PrimaryKeyEntity
-import com.shift.kanna.repository.IssueRepository
 import jakarta.persistence.*
 
 @Entity

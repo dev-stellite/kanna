@@ -11,7 +11,7 @@ abstract class PrimaryKeyEntity : Persistable<Long> {
     @GeneratedValue
     private val id: Long = 0
 
-    override fun getId(): Long? = id
+    override fun getId(): Long = id
 
-    override fun isNew(): Boolean = (getId() ?: 0) <= 0
+    override fun isNew(): Boolean = getId() <= 0
 }

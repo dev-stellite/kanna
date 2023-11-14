@@ -34,7 +34,7 @@ class IssueController(
         val issue = issueService.getIssue(issueId)
             ?: throw ResponseStatusException(HttpStatus.NOT_FOUND)
 
-        if (issue.projectId != projectId) throw ResponseStatusException(HttpStatus.NOT_FOUND)
+        if (issue.project.id != projectId) throw ResponseStatusException(HttpStatus.NOT_FOUND)
 
         return issue
     }
