@@ -7,10 +7,10 @@ import jakarta.persistence.*
 @Table(name = "project_member")
 class ProjectMember(
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "account_id", insertable = false, updatable = false)
+    @JoinColumn(name = "account_id")
     val account: Account,
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "project_id", insertable = false, updatable = false)
+    @JoinColumn(name = "project_id")
     val project: Project,
 ) : PrimaryKeyEntity()

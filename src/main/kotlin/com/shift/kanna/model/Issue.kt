@@ -17,11 +17,11 @@ class Issue(
     val issueKey: Long = 0,
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "project_id", insertable = false, updatable = false)
+    @JoinColumn(name = "project_id")
     var project: Project,
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "reporter_id", insertable = false, updatable = false)
+    @JoinColumn(name = "reporter_id")
     val reporter: ProjectMember
 ) : PrimaryKeyEntity() {
     @Column
@@ -31,6 +31,6 @@ class Issue(
     var status: IssueStatus = IssueStatus.Todo; private set
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "assignee_id", insertable = false, updatable = false)
+    @JoinColumn(name = "assignee_id")
     var assignee: ProjectMember? = null; private set
 }

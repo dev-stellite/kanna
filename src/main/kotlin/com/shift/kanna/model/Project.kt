@@ -16,7 +16,7 @@ class Project(
     val title: String,
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "owner_id", insertable = false, updatable = false)
+    @JoinColumn(name = "owner_id")
     val owner: Account,
 ) : PrimaryKeyEntity() {
     fun join(account: Account): ProjectMember {
