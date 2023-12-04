@@ -9,6 +9,6 @@ class GetIssuesResponseDto(issue: Issue) {
     val title = issue.title
     val storypoint = issue.storypoint
     val status = issue.status
-    val reporter = issue.reporter.id
+    val reporter = issue.reporter
     val assigneeId = issue.assignee?.id
 }
