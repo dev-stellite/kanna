@@ -2,6 +2,7 @@ package com.shift.kanna.model
 
 import com.fasterxml.jackson.annotation.JsonIgnore
 import com.shift.kanna.dto.account.RegisterAccountDto
+import com.shift.kanna.model.base.PrimaryKeyEntity
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
@@ -9,25 +10,12 @@ import jakarta.persistence.Id
 import java.io.Serializable
 
 @Entity
-class Account: Serializable {
-    @Id @GeneratedValue
-    var id: Long = 0; private set
-
+class Account(
     @Column
-    lateinit var accountName: String; private set
-
+    val accountName: String,
     @Column(unique = true)
-    lateinit var email: String; private set
-
+    val email: String,
     @Column
     @JsonIgnore
-    lateinit var password: String; private set
-
-    companion object {
-        fun register(registerAccount: RegisterAccountDto, encodedPassword: String) = Account().apply {
-            accountName = registerAccount.accountName
-            email = registerAccount.email
-            password = encodedPassword
-        }
-    }
-}
+    val password: String,
+) : PrimaryKeyEntity(), Serializable

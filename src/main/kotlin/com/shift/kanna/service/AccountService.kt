@@ -31,7 +31,11 @@ class AccountService(
         }
 
         val password = passwordEncoder.encode(registerAccountDto.password)
-        val account = Account.register(registerAccountDto, password)
+        val account = Account(
+            accountName = registerAccountDto.accountName,
+            email = registerAccountDto.email,
+            password = password,
+        )
 
         return accountRepository.save(account)
     }
